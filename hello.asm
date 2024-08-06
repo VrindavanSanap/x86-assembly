@@ -1,5 +1,5 @@
   section .data
-  ; db= define byte
+  ;db= define byte
   ;0xA is newline char
   msg db"Hello world", 0xA
   ; msg_size EQU$- msg calculates the size of the data from the msg label 
