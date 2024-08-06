@@ -4,12 +4,21 @@ if [ -z "$1" ]; then
 fi
 
 file_name="${1%.*}"
-asm_file_name="${file_name}.asm"
-obj_file_name="${file_name}.o"
+extension="${1##*.}"
+if [ "$extension" == "asm" ]; then
+    asm_file_name="${file_name}.asm"
+    obj_file_name="${file_name}.o"
 
-# create a elf object file
-nasm -f elf64 ${asm_file_name}
-ld -o ${file_name} ${obj_file_name}
-rm -rf ${obj_file_name}
-./${file_name}
-echo $?
+    # create a elf object file
+    nasm -f elf64 ${asm_file_name}
+    ld -o ${file_name} ${obj_file_name}
+    rm -rf ${obj_file_name}
+    ./${file_name}
+    echo $?
+fi
+
+if [ "$extension" == "c" ]; then
+    c_file_name="${file_name}.c"
+    gcc ${c_file_name} -o ${file_name}
+    ./${file_name}
+fi 
