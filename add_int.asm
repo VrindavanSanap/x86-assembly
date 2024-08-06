@@ -15,13 +15,9 @@ _start:
   ; ssize_t write(int fd, const void *buf, size_t count)
   ; write syscall returns the number of bytes written to the fd 
 
-  mov rdi, 1    ; arg0 fd (1 is stdout)
-  mov rsi, msg  ; arg1 buffer
-  mov rdx, msg_size ; arg2 count (use the calculated size instead of 0xff)
-  mov rax, 1    ; write syscall number
-  syscall
-
-  ; Exit system call
+  mov r8, 7;
+  mov r9, 42;
+  add r8, r9
   mov rax, 60   ; Syscall number for sys_exit (60)
-  mov rdi, 42 ; Exit code 0
+  mov rdi, r8   ; Exit code result of addition  
   syscall       ; Invoke the syscall
