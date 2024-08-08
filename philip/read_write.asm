@@ -1,21 +1,17 @@
 ; Created by Vrindavan sanap
-; echo_back.asm 
-; Written for nasm assembler 
-; expected output format elf64
+; read_write.asm 
+; Written for fasm assembler
 ;
 ; simple program that takes in string from std in and 
 ; writes it back
 ;
 
-section .bss
-    buf resb 80 ; reserve 80 bytes for the input buffer 
 
-section .text
-global _start
+format ELF64 executable 3
 
+segment readable executable 
 
-_start:
-
+entry $
     ; read from stdin 
     xor rdi, rdi ; stdin fd
     mov rsi, buf ; buffer address
@@ -35,3 +31,5 @@ _start:
     mov rax, 60  ; exit syscall
     syscall
 
+segment readable writeable 
+buf rb 80
