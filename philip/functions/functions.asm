@@ -44,8 +44,8 @@ read_console:
   syscall 
   ret 
 
-; write console 
-; write the buffer to stdout 
+; function: write console 
+; writes the buffer to stdout 
 ; inputs
 ;   rax : buf addr 
 ;   rdi : buffer size  

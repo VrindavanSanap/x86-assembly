@@ -63,6 +63,43 @@ write_console:
   mov rax, 1 ; write syscall
   syscall 
   ret
-  
+
+; uitoa
+; converts unsigned int to string (base 10)
+; inputs: 
+;   rax : string buf
+;   rdi : number to convert
+;
+; outputs:
+;   - the buffer is filled with base 10 conversion
+;
+
+uitoa: 
+  ; handle the case where the number is zero
+  mov byte [rax], 48 ; set the first char to '0'
+  inc eax
+  mov byte [rax], 0 ; zero terminate the string
+  goto uitoa_end
+
+  ; handle all the rest of the cases
+
+  ; count the number of digits required for conversion
+  xor rcx, rcx  ; use rcx as a counter for number of digits
+  mov rsi, rax  ; move the string buffer to rsi
+  ; IDV instruction 
+  ;
+  ; Inputs : 
+  ;   Dividend : rax 
+  ;   Divisor  : rdx, 
+  ;
+  ; Outputs: 
+  ;   Quotient : rax 
+  ;   Remainder: rax 
+ 
+
+
+
+uitoa_end:  
+  ret
 segment readable writeable 
 buf rb 80
