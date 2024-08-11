@@ -1,6 +1,6 @@
 ; Created by Vrindavan
-; add_int.asm
-; Demonstrates addition of two integers using add instruction 
+; mul_int.asm
+; Demonstrates multiplication of two integers using mul instruction 
 ; Written for nasm assembler
 ;
 ; 
@@ -8,20 +8,24 @@ section .text
   global _start
 
 _start:
-  ; ssize_t write(int fd, const void *buf, size_t count)
-  ; write syscall returns the number of bytes written to the fd 
 
-  mov r8, 7;
-  mov r9, 42;
+  mov rdi, 7;
+  mov rax, 6;
+  mul rdi
 
-  ; add instruction 
-  ; Adds immediate value to desination 
+  ; mul instruction 
+  ; Performs multiplicaion of unsigned integer (operand * rax) 
+  ;   add <op> 
   ; syntax: 
-  ;   add <dest> <immediate>
+  ; input: 
+  ;   Numbers to be multiplied
+  ;     op1: rax
+  ;     op2: any register 
+  ; ouput:
+  ;   Result is stored in rdx:rax
   ; 
 
-  add r8, r9
-  mov rax, r8
+
   call write_exit_code
 
 

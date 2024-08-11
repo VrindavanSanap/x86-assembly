@@ -29,6 +29,7 @@ _start:
   ; writes int to exit code
   ; inputs 
   ;   rax : exit code
+
 write_exit_code:
   ; Exit syscall 
   ; Syscall number (rax) : 60
