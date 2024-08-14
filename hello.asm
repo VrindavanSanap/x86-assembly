@@ -1,8 +1,9 @@
   section .data
-  ; db = define byte
+  ; db = define bytes
   ; 0xA is newline char
   msg db "Hello world", 0xA
-  ; msg_size EQU $- msg calculates the size of the data from the msg label 
+  ; msg_size EQU $- msg calculates the size of the data 
+  ; from the msg label 
   ; to the current location ($), which is the end of the data. This 
   ; effectively gives you the number of bytes that the hello_world string 
   ; occupies, including the newline character.

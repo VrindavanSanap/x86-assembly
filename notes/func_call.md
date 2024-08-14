@@ -12,11 +12,9 @@
  * (note: r12-r15, rbp, rbx are callee-preserved in C ABI)
  *
  
-For example 
-Write syscall function takes in 3 arguments 
-therefore 
+For example, the write syscall function takes in 3 arguments. 
+Therefore, 
 rdi = fd
 rsi = buf
 rdx = nbyte
 ssize_t write(int fildes, const void *buf, size_t nbyte);
-
