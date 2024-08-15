@@ -11,7 +11,7 @@ _start:
   ; ssize_t write(int fd, const void *buf, size_t count)
   ; write syscall returns the number of bytes written to the fd 
 
-  mov r8, 7;
+  mov r8, 2;
 
   ; add instruction 
   ; Negates a value in a register 

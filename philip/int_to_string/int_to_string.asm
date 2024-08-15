@@ -73,7 +73,6 @@ write_console:
 ; outputs:
 ;   - the buffer is filled with base 10 conversion
 ;
-
 uitoa: 
   ; handle the case where the number is zero
   mov byte [rax], 48 ; set the first char to '0'
