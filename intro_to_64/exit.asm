@@ -4,15 +4,13 @@
 ;
 ; No input
 ;
-; Output only the exit status ($? ubt =)
-;
+; Output only the exit status ($? = exit status)
 
-segment .text
+section .text
 
 global _start
 
-
 _start:
-  mov eax ,1 ; 1 is the exit syscall  number
-  mov ebx ,5 ; the syscall value to return 
-  int 0x80
+  mov rax, 60     ; 60 is the syscall number for exit
+  mov rdi, 5      ; the exit status to return 
+  syscall
