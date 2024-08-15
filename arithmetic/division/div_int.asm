@@ -1,6 +1,6 @@
 ; Created by Vrindavan
-; mul_int.asm
-; Demonstrates multiplication of two integers using mul instruction 
+; div_int.asm
+; Demonstrates division of two integers using mul instruction 
 ; Written for nasm assembler
 ;
 ; 
@@ -12,13 +12,18 @@ _start:
   mov rdi, 7;
   mov rax, 6;
   mul rdi
-  ; The mul instruction multiplies the unsigned integer in RAX by the unsigned integer in the specified operand.
-  ; Syntax: mul <operand>
-  ; Input:
-  ;   RAX: The first operand and the destination for the lower 64 bits of the result.
-  ;   <operand>: The second operand.
-  ; Output:
-  ;   RDX:RAX: The product of the two operands.
+
+  ; div instruction 
+  ; Performs div of unsigned integer (operand * rax) 
+  ;   div <op2> 
+  ; syntax: 
+  ; input: 
+  ;   Numbers to be multiplied
+  ;     op1: rax
+  ;     op2: any register 
+  ; ouput:
+  ;   Result is stored in rdx:rax
+  ; 
 
 
   call write_exit_code
