@@ -13,17 +13,14 @@ _start:
   mov rax, 6;
   mul rdi
 
-  ; div instruction 
-  ; Performs div of unsigned integer (operand * rax) 
-  ;   div <op2> 
-  ; syntax: 
-  ; input: 
-  ;   Numbers to be multiplied
-  ;     op1: rax
-  ;     op2: any register 
-  ; ouput:
-  ;   Result is stored in rdx:rax
-  ; 
+  ; The mul instruction multiplies the unsigned integer in RAX by the unsigned integer in the specified operand.
+  ; Syntax: mul <operand>
+  ; Input:
+  ;   RAX: The first operand and the destination for the lower 64 bits of the result.
+  ;   <operand>: The second operand.
+  ; Output:
+  ;   RDX:RAX: The product of the two operands.
+
 
 
   call write_exit_code
