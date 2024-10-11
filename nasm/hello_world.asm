@@ -14,8 +14,6 @@ _start:
   mov edx, len    ; number of bytes to write
   int 0x80
 
-
-
-
-
-
+  mov eax, 1      ; exit syscall
+  mov ebx, 0      ; status code 0
+  int 0x80
