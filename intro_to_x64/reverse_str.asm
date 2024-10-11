@@ -41,29 +41,24 @@ write_console:
 
 
 
-; write_n_times
-; writes output from buffer to stdout n times
+; reverse_str 
+; reverses string buffer 
 ; inputs:
 ;   rax: buf addr
 ;   rdi: buf size
-;		rsi: n (number of times to write)
 ; ouputs:
 ;   rax: number of bytes written (-1 if error)
 
-write_n_times:
-	mov r12, rax
-	mov r13, rdi
-	mov r14, rsi
-	mov r10, 3
-
-write_n_times_loop:
+reverse_str:
+  
+reverse_str_loop:
 
 	mov rax, r12 
 	mov rdi, r13 
 	mov rsi, r14 
 	call write_console
 	dec r10 
-	jnz write_n_times_loop
+	jnz reverse_str_loop 
 	ret 
 
 
@@ -96,31 +91,17 @@ write_exit_code:
 clean_exit:
   mov rax, 0 ; sys_exit
   call write_exit_code
-   
- 
 
 
- 
- 
 
- 
-
- 
- 
 entry $
   mov rax, buf 
   mov rdi, 80
-  call read_console
+  call read_console // returns number of bytes in rax
 
-  mov rdi, rax 
+  mov rdi, rax      // number of bytes
   mov rax, buf 
-  call write_n_times 
-
-
-  ; exit
-  xor rdi, rdi ; exit code 0
-  mov rax, 60  ; sys_exit
-  syscall
+  call write_console
 
  
   
@@ -128,7 +109,4 @@ entry $
 segment readable writeable
 
 buf rb 80
-
-
-
 
