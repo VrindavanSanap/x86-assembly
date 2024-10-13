@@ -1,6 +1,4 @@
 format ELF64 executable 3
-
-
 segment readable executable
 
 ; read_console
@@ -20,9 +18,6 @@ read_console:
   syscall
   ret 
 
-
-
-
 ; write_console
 ; writes output from buffer to stdout
 ; inputs:
@@ -38,8 +33,7 @@ write_console:
   xor rdi, rdi  ; ARG0 stdin 
   syscall
   ret 
-
-
+;---------------------------------------------------------------------------------------
 
 ; reverse_str 
 ; reverses string buffer 
@@ -50,15 +44,19 @@ write_console:
 ;   rax: number of bytes written (-1 if error)
 
 reverse_str:
-  
-reverse_str_loop:
+  mov r12, rax
+  mov r13, rdi
+  mov rax, rdi 
+  mov rcx, 2
+  xor rdx, rdx
+  div rcx
+	mov r10, rax 
+  mov byte [r12], 'X'
 
-	mov rax, r12 
-	mov rdi, r13 
-	mov rsi, r14 
-	call write_console
-	dec r10 
-	jnz reverse_str_loop 
+reverse_str_loop:
+  
+  mov rax, r12
+  mov rdi, r13
 	ret 
 
 
@@ -97,11 +95,13 @@ clean_exit:
 entry $
   mov rax, buf 
   mov rdi, 80
-  call read_console // returns number of bytes in rax
-
-  mov rdi, rax      // number of bytes
-  mov rax, buf 
+  call read_console 
+  mov  rdi, rax
+  mov rax, buf
+  call reverse_str
   call write_console
+  call clean_exit
+
 
  
   
