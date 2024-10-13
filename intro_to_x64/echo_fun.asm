@@ -1,5 +1,11 @@
-format ELF64 executable 3
+//
+//  echo_fun.asm
+//  intro_to_x64 
+//
+//  Created by Vrindavan Sanap on 2024-10-13.
+//
 
+format ELF64 executable 3
 segment readable executable
 
 
@@ -24,7 +30,6 @@ read_console:
 
 
 
-
 ; write_console
 ; writes output from buffer to stdout
 ; inputs:
@@ -42,24 +47,13 @@ write_console:
   syscall
   ret 
 
-
- 
- 
-
- 
- 
-
- 
- 
-
-
 entry $
-  mov rax, buf 
-  mov rdi, 80
-  call read_console
+  mov rax, buf      // arg0
+  mov rdi, 80       // arg1
+  call read_console // returns number of bytes written into rax
 
-  mov rdi, rax 
-  mov rax, buf 
+  mov rdi, rax      // arg1
+  mov rax, buf      // arg0 
   call write_console 
 
 
@@ -69,14 +63,5 @@ entry $
   syscall
 
 
- 
-  
-  
-
 segment readable writeable
-
 buf rb 80
-
-
-
-
