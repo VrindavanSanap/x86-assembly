@@ -1,5 +1,11 @@
-format ELF64 executable 3 ;
+;
+; write_n_times.asm 
+; intro_to_x64
+; write a string buffer n times 
+; Created by Vrindavan Sanap on 2024-10-13.
 
+
+format ELF64 executable 3 ;
 
 segment readable executable
 
@@ -53,8 +59,7 @@ write_console:
 write_n_times:
 	mov r12, rax
 	mov r13, rdi
-	mov r14, rsi
-	mov r10, 3
+	mov r10, rsi 
 
 write_n_times_loop:
 
@@ -114,6 +119,7 @@ entry $
 
   mov rdi, rax 
   mov rax, buf 
+  mov rsi, 10
   call write_n_times 
 
 
